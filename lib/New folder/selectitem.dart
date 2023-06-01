@@ -6,7 +6,7 @@ class Model {
 
 abstract class ModelController extends GetxController {
   List<Model> modelList = [];
-  List<Model> _selectedList = [];
+  List<Model> selectedList = [];
 
   bool isSelected = false;
   bool isAllSelected = false;
@@ -17,14 +17,14 @@ abstract class ModelController extends GetxController {
     modelList[selectedIndex].isSelected = !modelList[selectedIndex].isSelected;
 
     if (modelList[selectedIndex].isSelected) {
-      _selectedList.add(modelList[selectedIndex]);
+      selectedList.add(modelList[selectedIndex]);
     } else {
-      _selectedList.remove(modelList[selectedIndex]);
+      selectedList.remove(modelList[selectedIndex]);
     }
 
-    if (_selectedList.length == modelList.length) {
+    if (selectedList.length == modelList.length) {
       selectAllOrDeselect(true);
-    } else if (_selectedList.isEmpty) {
+    } else if (selectedList.isEmpty) {
       selectAllOrDeselect(false);
     } else {
       isAllSelected = false;
@@ -57,8 +57,8 @@ abstract class ModelController extends GetxController {
 
     isAllSelected = isSelected;
 
-    _selectedList = [];
-    _selectedList.addAllIf(isSelected, modelList);
+    selectedList = [];
+    selectedList.addAllIf(isSelected, modelList);
 
     for (Model e in modelList) {
       e.isSelected = isSelected;
@@ -67,7 +67,7 @@ abstract class ModelController extends GetxController {
   }
   //----------------------------------------------------------------------------
 
-  int get selectedLength => _selectedList.length;
+  int get selectedLength => selectedList.length;
 
   Future<bool> onWillPop() async {
     if (isSelected) {

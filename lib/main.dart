@@ -29,12 +29,29 @@ class HomePage extends StatelessWidget {
           return WillPopScope(
             onWillPop: controller.onWillPop,
             child: Scaffold(
-              appBar: AppBar(title: const Text("List")),
+              appBar: AppBar(
+                actions: [
+                  IconButton(
+                    onPressed: () => controller.isAllSelected
+                        ? controller.selectAllOrDeselect(false)
+                        : controller.selectAllOrDeselect(true),
+                    icon: controller.isAllSelected
+                        ? const Icon(Icons.deselect)
+                        : const Icon(Icons.select_all),
+                  )
+                ],
+                title: Text(
+                  controller.isSelected
+                      ? "${controller.selectedLength} selected item"
+                      : "List",
+                ),
+              ),
               body: ListView.builder(
                 itemCount: controller.modelList.length,
                 itemBuilder: (context, index) {
                   MyModelName modelName = controller.modelList[index];
                   return ListTile(
+                    selected: modelName.isSelected,
                     onTap: () => controller.onTap(index),
                     onLongPress: () => controller.onLongPress(index),
                     leading: Text(modelName.id.toString()),

@@ -11,7 +11,7 @@ class MyModelName {
     this.note,
     this.dateTime,
   }) {
-    dateTime = DateTime.now();
+    dateTime ??= DateTime.now();
   }
 
   static List<MyModelName> list = [
