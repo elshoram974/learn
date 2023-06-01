@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return const GetMaterialApp(
       home: HomePage(),
     );
   }
@@ -38,7 +38,13 @@ class HomePage extends StatelessWidget {
                     icon: controller.isAllSelected
                         ? const Icon(Icons.deselect)
                         : const Icon(Icons.select_all),
-                  )
+                  ),
+                  if (controller.isSelected)
+                    IconButton(
+                      onPressed: controller.delete,
+                      icon: const Icon(Icons.delete),
+                    ),
+                  const SizedBox(width: 20)
                 ],
                 title: Text(
                   controller.isSelected

@@ -26,4 +26,11 @@ class MyModelName {
     MyModelName(id: 8, name: "8", note: "note8", dateTime: DateTime(2010)),
     MyModelName(id: 9, name: "9", note: "note9", dateTime: DateTime(1995)),
   ];
+
+  bool isEqual(MyModelName modelName) {
+    return (modelName.id == id &&
+        modelName.name == name &&
+        modelName.note == note &&
+        modelName.dateTime == dateTime);
+  }
 }

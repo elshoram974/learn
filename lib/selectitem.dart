@@ -32,10 +32,7 @@ abstract class ModelController extends GetxController {
   void onTap(int selectedIndex) {
     if (isSelected) {
       _selectOnTap(selectedIndex);
-    } else {
-      // Get.to(() => SemesterScreen(semester: _semesterList[selectedIndex]));
     }
-    update();
   }
   //----------------------------------------------------------------------------
 
